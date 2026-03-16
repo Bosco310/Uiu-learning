@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>UI Commit Logger</title>
+<style>
+body{
+  font-family: Arial;
+  padding: 20px;
+}
+
+.container{
+  max-width: 400px;
+}
+
+input{
+  padding: 10px;
+  width: 70%;
+}
+
+button{
+  padding: 10px;
+  cursor: pointer;
+}
+
+.commit-box{
+  margin-top:20px;
+  border-top:1px solid #ccc;
+  padding-top:10px;
+}
+
+.commit{
+  background:#f4f4f4;
+  padding:8px;
+  margin-top:8px;
+  border-radius:6px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h3>Commit Activity</h3>
+
+<input type="text" id="commitInput" placeholder="Write commit message">
+<button onclick="addCommit()">Commit</button>
+
+<div class="commit-box" id="commitBox"></div>
+
+</div>
+
+<script>
+
+function addCommit(){
+
+let message = document.getElementById("commitInput").value;
+
+if(message === ""){
+alert("Enter commit message");
+return;
+}
+
+let time = new Date().toLocaleTimeString();
+
+let commitItem = document.createElement("div");
+commitItem.className = "commit";
+commitItem.innerHTML = "<b>Commit:</b> " + message + "<br><small>" + time + "</small>";
+
+document.getElementById("commitBox").prepend(commitItem);
+
+document.getElementById("commitInput").value = "";
+
+}
+
+</script>
+
+</body>
+</html>
