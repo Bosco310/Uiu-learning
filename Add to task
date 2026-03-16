@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Task Commit UI</title>
+<style>
+body{
+  font-family: Arial;
+  padding: 20px;
+}
+
+input{
+  padding:8px;
+}
+
+button{
+  padding:8px 12px;
+  margin-left:5px;
+  cursor:pointer;
+}
+
+li{
+  margin-top:10px;
+}
+
+.completed{
+  text-decoration: line-through;
+  color: gray;
+}
+</style>
+</head>
+
+<body>
+
+<h2>Task Commit App</h2>
+
+<input type="text" id="taskInput" placeholder="Enter task">
+<button onclick="addTask()">Add</button>
+
+<ul id="taskList"></ul>
+
+<script>
+
+function addTask(){
+
+let task = document.getElementById("taskInput").value;
+
+if(task === ""){
+alert("Enter a task");
+return;
+}
+
+let li = document.createElement("li");
+li.innerHTML = task + 
+' <button onclick="commitTask(this)">Commit</button>';
+
+document.getElementById("taskList").appendChild(li);
+
+document.getElementById("taskInput").value = "";
+
+}
+
+function commitTask(button){
+
+let li = button.parentElement;
+li.classList.add("completed");
+button.innerText = "Committed";
+button.disabled =
